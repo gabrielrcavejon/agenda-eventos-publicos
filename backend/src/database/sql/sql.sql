@@ -50,3 +50,16 @@ CREATE TABLE usuario (
 	telefone VARCHAR(50),
 	foto TEXT
 );
+
+CREATE TABLE evento (
+	idevento SERIAL PRIMARY KEY,
+	idempresa INTEGER NOT NULL REFERENCES empresa(idempresa),
+	idendereco INTEGER NOT NULL REFERENCES endereco(idendereco),
+	idusuariocriacao INTEGER NOT NULL REFERENCES usuario(idusuario),
+	nome VARCHAR(100) NOT NULL,
+	status CHAR(1) NOT NULL CHECK (status IN ('A','P','R')),
+	descricao TEXT,
+	imagem TEXT,
+	datahorainicio TIMESTAMP NOT NULL,
+	datahorafim TIMESTAMP
+);

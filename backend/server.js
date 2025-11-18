@@ -6,6 +6,8 @@ import estadoRouter from "./src/routes/estadoRoutes.js";
 import cidadeRouter from "./src/routes/cidadeRoutes.js";
 import enderecoRouter from "./src/routes/enderecoRoutes.js";
 import empresaRouter from "./src/routes/empresaRoutes.js";
+import eventoRouter from "./src/routes/eventoRoutes.js";
+
 dotenv.config();
 
 const app = express();
@@ -18,6 +20,7 @@ app.use("/estado", estadoRouter);
 app.use("/cidade", cidadeRouter);
 app.use("/endereco", enderecoRouter);
 app.use("/empresa", empresaRouter);
+app.use("/evento", eventoRouter);
 
 app.listen(process.env.PORT, () => {
 	console.log("API rodando na porta " + process.env.PORT);
