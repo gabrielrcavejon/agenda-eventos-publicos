@@ -13,6 +13,16 @@ CREATE TABLE estado (
 
 INSERT INTO estado(idestado, idpais, nome) VALUES(1, 1, 'PARANÁ');
 
+CREATE TABLE cidade (
+	idcidade SERIAL PRIMARY KEY,
+	idestado INTEGER NOT NULL REFERENCES estado(idestado) ON DELETE CASCADE,
+	nome CHARACTER VARYING(100) NOT NULL
+);
+
+INSERT INTO cidade(idcidade, idestado, nome) VALUES(1, 1, 'DOIS VIZINHOS');
+INSERT INTO cidade(idcidade, idestado, nome) VALUES(2, 1, 'FRANCISCO BELTRÃO');
+INSERT INTO cidade(idcidade, idestado, nome) VALUES(3, 1, 'PATO BRANCO');
+
 CREATE TABLE usuario (
 	idusuario SERIAL, 
 	nome CHARACTER VARYING(100) NOT NULL,
