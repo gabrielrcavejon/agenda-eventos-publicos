@@ -1,0 +1,8 @@
+CREATE TABLE usuario (
+	idusuario SERIAL, 
+	nome CHARACTER VARYING(100),
+	email CHARACTER VARYING(100),
+  senha CHARACTER VARYING(100)
+);
+
+
