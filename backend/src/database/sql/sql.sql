@@ -41,8 +41,12 @@ CREATE TABLE empresa (
 );
 
 CREATE TABLE usuario (
-	idusuario SERIAL, 
-	nome CHARACTER VARYING(100) NOT NULL,
-	email CHARACTER VARYING(100) UNIQUE NOT NULL,
-  senha CHARACTER VARYING(100) NOT NULL
+	idusuario SERIAL PRIMARY KEY,
+	idempresa INTEGER NOT NULL REFERENCES empresa(idempresa),
+	tipo CHAR(1) NOT NULL CHECK (tipo IN ('A','O','P')),
+	nome VARCHAR(100) NOT NULL,
+	email VARCHAR(100) UNIQUE NOT NULL,
+	senha VARCHAR(100) NOT NULL,
+	telefone VARCHAR(50),
+	foto TEXT
 );

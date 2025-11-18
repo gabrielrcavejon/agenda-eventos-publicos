@@ -3,9 +3,19 @@ import { usuarioService } from "../services/usuarioService.js";
 export const usuarioController = {
 	async criar(req, res) {
 		try {
-			const { email, senha } = req.body;
+			const { idEmpresa, tipo, nome, email, senha, telefone, foto } = req.body;
 
-			const usuario = await usuarioService.criarUsuario(email, senha);
+			const usuario = await usuarioService.criarUsuario(
+				idEmpresa,
+				tipo,
+				nome,
+				email,
+				senha,
+				telefone,
+				foto
+			);
+
+			usuario.senha = null;
 
 			return res.status(201).json({
 				message: "Usuário criado com sucesso",
