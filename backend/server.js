@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import paisRouter from "./src/routes/paisRoutes.js";
 import usuarioRouter from "./src/routes/usuarioRoutes.js";
+import estadoRouter from "./src/routes/estadoRoutes.js";
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 // rotas
 app.use("/usuario", usuarioRouter);
 app.use("/pais", paisRouter);
+app.use("/estado", estadoRouter);
 
 app.listen(process.env.PORT, () => {
 	console.log("API rodando na porta " + process.env.PORT);

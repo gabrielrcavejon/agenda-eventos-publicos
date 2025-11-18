@@ -1,9 +1,17 @@
 CREATE TABLE pais (
-	idpais SERIAL, 
+	idpais SERIAL PRIMARY KEY, 
 	nome CHARACTER VARYING(100) NOT NULL
 );
 
-INSERT INTO pais(nome) VALUES('BRASIL');
+INSERT INTO pais(idpais, nome) VALUES(1, 'BRASIL');
+
+CREATE TABLE estado (
+	idestado SERIAL PRIMARY KEY,
+	idpais INTEGER NOT NULL REFERENCES pais(idpais) ON DELETE CASCADE,
+	nome CHARACTER VARYING(100) NOT NULL
+);	
+
+INSERT INTO estado(idestado, idpais, nome) VALUES(1, 1, 'PARANÁ');
 
 CREATE TABLE usuario (
 	idusuario SERIAL, 
