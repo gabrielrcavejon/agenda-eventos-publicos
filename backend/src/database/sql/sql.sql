@@ -32,13 +32,39 @@ CREATE TABLE endereco (
 	numero VARCHAR(20)
 );
 
+INSERT INTO endereco (idcidade, logradouro, bairro, cep, numero)
+VALUES (1, 'Rua das Flores', 'Centro', '80000-000', '123');
+
+INSERT INTO endereco (idcidade, logradouro, bairro, cep, numero)
+VALUES (2, 'Avenida Brasil', 'Jardim América', '80500-200', '450');
+
+INSERT INTO endereco (idcidade, logradouro, bairro, cep, numero)
+VALUES (3, 'Rua XV de Novembro', 'Batel', '80420-150', '789');
+
+INSERT INTO endereco (idcidade, logradouro, bairro, cep, numero)
+VALUES (1, 'Travessa dos Pioneiros', 'Água Verde', '80610-300', '55');
+
+INSERT INTO endereco (idcidade, logradouro, bairro, cep, numero)
+VALUES (3, 'Rua Curitiba', 'Rebouças', '80230-020', '999');
+
 CREATE TABLE empresa (
 	idempresa SERIAL PRIMARY KEY,
+	idendereco INTEGER NOT NULL REFERENCES endereco(idendereco),
 	nome VARCHAR(100) NOT NULL,
 	fantasia VARCHAR(100),
 	cnpj VARCHAR(20) UNIQUE NOT NULL,
 	tipo CHAR(1) NOT NULL CHECK (tipo IN ('O','A'))
 );
+
+INSERT INTO empresa (nome, fantasia, cnpj, tipo, idendereco)
+VALUES ('PREFEITURA MUNICIPAL', 'Prefeitura', '12345678000190', 'O', 3);
+
+INSERT INTO empresa (nome, fantasia, cnpj, tipo, idendereco)
+VALUES ('BANCO BANQUEIRO TOP', 'BankTop', '98765432000155', 'A', 2);
+
+INSERT INTO empresa (nome, fantasia, cnpj, tipo, idendereco)
+VALUES ('JOCE FERRAGENS', 'Joce Ferragens', '45678912000111', 'O', 1);
+
 
 CREATE TABLE usuario (
 	idusuario SERIAL PRIMARY KEY,
@@ -86,3 +112,13 @@ CREATE TABLE evento_tema (
   idtema INT NOT NULL REFERENCES tema(idtema) ON DELETE CASCADE,
   PRIMARY KEY (idevento, idtema)
 );
+
+INSERT INTO usuario (idempresa, tipo, nome, email, senha, telefone, foto)
+VALUES (2, 'O', 'Gabriel Rodrigo Cavejon', 'gabriel.cavejon@hotmail.com', '$2b$10$hRk.0cQ7BX4mLOPkd2GD1utODZDHj6mEmsiNy3Tf6jsyXnfWOXtsW', '41999990000', NULL);
+
+INSERT INTO usuario (idempresa, tipo, nome, email, senha, telefone, foto)
+VALUES (3, 'O', 'Jocemar Rodrigues Duarte', 'jocemar@example.com', '$2b$10$hRk.0cQ7BX4mLOPkd2GD1utODZDHj6mEmsiNy3Tf6jsyXnfWOXtsW', '41988887777', NULL);
+
+INSERT INTO usuario (idempresa, tipo, nome, email, senha, telefone, foto)
+VALUES (1, 'A', 'Laura Silvestrin Eschembach', 'laura@hotmail.com', '$2b$10$hRk.0cQ7BX4mLOPkd2GD1utODZDHj6mEmsiNy3Tf6jsyXnfWOXtsW', '41977776666', NULL);
+

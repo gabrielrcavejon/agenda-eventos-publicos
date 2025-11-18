@@ -4,11 +4,20 @@ export const empresaController = {
 	async criar(req, res) {
 		try {
 			const dados = req.body;
+
+			// validação simples
+			if (!dados.idEndereco) {
+				return res.status(400).json({
+					error: "idEndereco é obrigatório",
+				});
+			}
+
 			const empresa = await empresaService.criarEmpresa(
 				dados.nome,
 				dados.fantasia,
 				dados.cnpj,
-				dados.tipo
+				dados.tipo,
+				dados.idEndereco
 			);
 
 			return res.status(201).json({
@@ -26,6 +35,7 @@ export const empresaController = {
 	async listar(req, res) {
 		try {
 			const empresas = await empresaService.listarEmpresas();
+
 			return res.status(200).json({
 				message: "Lista de empresas carregada com sucesso",
 				empresas,

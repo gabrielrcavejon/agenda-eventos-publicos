@@ -1,5 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
+
 import paisRouter from "./src/routes/paisRoutes.js";
 import usuarioRouter from "./src/routes/usuarioRoutes.js";
 import estadoRouter from "./src/routes/estadoRoutes.js";
@@ -14,6 +16,16 @@ import eventoTemaRouter from "./src/routes/eventoTemaRoutes.js";
 dotenv.config();
 
 const app = express();
+
+// LIBERA TUDO (qualquer origem, qualquer método, qualquer header)
+app.use(
+	cors({
+		origin: "*",
+		methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+		allowedHeaders: ["Content-Type", "Authorization"],
+	})
+);
+
 app.use(express.json());
 
 // rotas

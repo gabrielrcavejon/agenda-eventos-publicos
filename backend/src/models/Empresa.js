@@ -4,11 +4,18 @@ export const Tipo = {
 };
 
 export class Empresa {
-	constructor(idEmpresa, nome, fantasia, cnpj, tipo) {
+	constructor(idEmpresa, nome, fantasia, cnpj, tipo, idEndereco) {
 		this.idEmpresa = idEmpresa;
 		this.nome = nome;
 		this.fantasia = fantasia;
 		this.cnpj = cnpj;
-		this.tipo = tipo; // deve ser 'O' ou 'A'
+		this.idEndereco = idEndereco;
+
+		// validação simples do tipo
+		if (![Tipo.ORGANIZADOR, Tipo.ADMINISTRADOR].includes(tipo)) {
+			throw new Error("Tipo inválido. Use 'O' ou 'A'.");
+		}
+
+		this.tipo = tipo;
 	}
 }

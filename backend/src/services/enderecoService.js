@@ -2,14 +2,8 @@ import { db } from "../database/config/db.js";
 import { Endereco } from "../models/Endereco.js";
 
 export const enderecoService = {
-	async criarEndereco(idCidade, logradouro, bairro, cep, numero) {
-		const endereco = new Endereco({
-			idCidade,
-			logradouro,
-			bairro,
-			cep,
-			numero,
-		});
+	async criarEndereco(idcidade, logradouro, bairro, cep, numero) {
+		const endereco = new Endereco(0, idcidade, logradouro, bairro, cep, numero);
 
 		const [retornoId] = await db("endereco")
 			.insert({

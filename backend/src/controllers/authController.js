@@ -14,17 +14,22 @@ export const authController = {
 
 			const senhaValida = await bcrypt.compare(senha, usuario.senha);
 
-			console.log(senha, usuario.senha);
-
 			if (!senhaValida)
 				return res.status(401).json({ error: "Usuário ou senha inválidos" });
 
 			const token = gerarToken({
 				idUsuario: usuario.idusuario,
 				idEmpresa: usuario.idempresa,
+				tipo: usuario.tipo,
 			});
 
-			return res.json({ token });
+			// REMOVE a senha antes de retornar
+			const { senha: _, ...usuarioSemSenha } = usuario;
+
+			return res.json({
+				token,
+				usuario: usuarioSemSenha,
+			});
 		} catch (err) {
 			console.log(err);
 			return res.status(500).json({ error: "Erro no login" });

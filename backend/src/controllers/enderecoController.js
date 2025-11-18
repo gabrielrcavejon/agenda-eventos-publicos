@@ -6,7 +6,7 @@ export const enderecoController = {
 			const dados = req.body;
 
 			const endereco = await enderecoService.criarEndereco(
-				dados.idCidade,
+				dados.idcidade,
 				dados.logradouro,
 				dados.bairro,
 				dados.cep,
