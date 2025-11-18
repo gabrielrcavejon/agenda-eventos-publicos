@@ -7,6 +7,7 @@ import cidadeRouter from "./src/routes/cidadeRoutes.js";
 import enderecoRouter from "./src/routes/enderecoRoutes.js";
 import empresaRouter from "./src/routes/empresaRoutes.js";
 import eventoRouter from "./src/routes/eventoRoutes.js";
+import authRouter from "./src/routes/authRoutes.js";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use("/cidade", cidadeRouter);
 app.use("/endereco", enderecoRouter);
 app.use("/empresa", empresaRouter);
 app.use("/evento", eventoRouter);
+app.use("/login", authRouter);
 
 app.listen(process.env.PORT, () => {
 	console.log("API rodando na porta " + process.env.PORT);
