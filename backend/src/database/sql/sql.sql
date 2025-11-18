@@ -32,6 +32,14 @@ CREATE TABLE endereco (
 	numero VARCHAR(20)
 );
 
+CREATE TABLE empresa (
+	idempresa SERIAL PRIMARY KEY,
+	nome VARCHAR(100) NOT NULL,
+	fantasia VARCHAR(100),
+	cnpj VARCHAR(20) UNIQUE NOT NULL,
+	tipo CHAR(1) NOT NULL CHECK (tipo IN ('O','A'))
+);
+
 CREATE TABLE usuario (
 	idusuario SERIAL, 
 	nome CHARACTER VARYING(100) NOT NULL,
