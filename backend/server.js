@@ -8,6 +8,8 @@ import enderecoRouter from "./src/routes/enderecoRoutes.js";
 import empresaRouter from "./src/routes/empresaRoutes.js";
 import eventoRouter from "./src/routes/eventoRoutes.js";
 import authRouter from "./src/routes/authRoutes.js";
+import temaRouter from "./src/routes/temaRoutes.js";
+import eventoTemaRouter from "./src/routes/eventoTemaRoutes.js";
 
 dotenv.config();
 
@@ -23,6 +25,8 @@ app.use("/endereco", enderecoRouter);
 app.use("/empresa", empresaRouter);
 app.use("/evento", eventoRouter);
 app.use("/login", authRouter);
+app.use("/tema", temaRouter);
+app.use("/evento-tema", eventoTemaRouter);
 
 app.listen(process.env.PORT, () => {
 	console.log("API rodando na porta " + process.env.PORT);

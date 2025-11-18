@@ -63,3 +63,26 @@ CREATE TABLE evento (
 	datahorainicio TIMESTAMP NOT NULL,
 	datahorafim TIMESTAMP
 );
+
+CREATE TABLE tema (
+  idtema SERIAL PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL
+);
+
+INSERT INTO tema (nome) VALUES
+('Tecnologia'),
+('Esportes'),
+('Música'),
+('Gastronomia'),
+('Negócios'),
+('Educação'),
+('Empreendedorismo'),
+('Arte'),
+('Startup'),
+('Saúde e Bem-estar');
+
+CREATE TABLE evento_tema (
+  idevento INT NOT NULL REFERENCES evento(idevento) ON DELETE CASCADE,
+  idtema INT NOT NULL REFERENCES tema(idtema) ON DELETE CASCADE,
+  PRIMARY KEY (idevento, idtema)
+);
