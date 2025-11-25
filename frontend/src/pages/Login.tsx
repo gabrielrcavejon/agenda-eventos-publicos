@@ -25,7 +25,7 @@ const Login: React.FC = () => {
   if (user.tipo === "A") {
     navigate("/dashboard");
   } else {
-    navigate("/cadastro");
+    navigate("/evento");
   }
   };
 

@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
       return;
     }
     if (usuario.tipo !== "A") {
-      navigate("/cadastro");
+      navigate("/evento");
     }
   }, [usuario, navigate]);
 
