@@ -153,7 +153,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="content-area flex-grow-1 p-5" style={{ backgroundColor: LIGHT_GRAY }}>
-      <h2 className="mb-4 text-dark fw-light border-bottom pb-2">Dashboard de Análise de Mercado</h2>
+      <h2 className="mb-4 text-dark fw-light border-bottom pb-2">Dashboard</h2>
 
       <div className="row g-3 mb-5"> 
         {[

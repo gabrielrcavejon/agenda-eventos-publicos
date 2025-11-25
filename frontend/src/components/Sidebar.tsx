@@ -15,10 +15,11 @@ const Sidebar: React.FC = () => {
       ? [
           { to: "/dashboard", label: "Home", icon: "bi-house-door-fill" },
           { to: "/empresa", label: "Cadastro Empresa", icon: "bi-buildings-fill" },
-          { to: "/evento", label: "Lista de Eventos", icon: "bi-calendar-event-fill" },
+          { to: "/eventos", label: "Lista de Eventos", icon: "bi-calendar-event-fill" },
         ]
       : [
-          { to: "/empresa", label: "Cadastro Empresa", icon: "bi-buildings-fill" },
+          { to: "/eventos", label: "Lista de Eventos", icon: "bi-calendar-event-fill" },
+          { to: "/evento", label: "Cadastro Evento", icon: "bi-calendar-plus-fill" },
         ];
 
   return (
@@ -27,12 +28,14 @@ const Sidebar: React.FC = () => {
       onMouseEnter={() => setCollapsed(false)}
       onMouseLeave={() => setCollapsed(true)}
     >
+      {/* Cabeçalho do Sidebar */}
       <div className="sidebar-header-blue d-flex align-items-center justify-content-center py-2">
         <img src="src/public/logo.png" alt="Logo" style={{ width: "120px" }} />
       </div>
 
       <hr className="text-white mt-0" />
 
+      {/* Lista de links */}
       <ul className="nav flex-column flex-grow-1">
         {links.map((link, idx) => (
           <li className="nav-item" key={idx}>
